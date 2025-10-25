@@ -1,0 +1,67 @@
+<Window x:Class="AdamTriggerSimulator.Views.WelcomeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        Title="Welcome"
+        Width="500" Height="380"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown">
+
+    <Border BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Background="{DynamicResource ApplicationBackgroundBrush}">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Welcome Icon/Title -->
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <TextBlock Text="👋" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Welcome to ADAM 6060 Trigger Simulator"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Instructions -->
+            <Border Grid.Row="1"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Padding="15"
+                    Margin="0,0,0,20"
+                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}">
+                <TextBlock TextWrapping="Wrap" LineHeight="22">
+                    <Run Text="To get started, you need to create a device profile." FontWeight="SemiBold"/>
+                    <LineBreak/><LineBreak/>
+                    <Run Text="A profile contains the IP address and port of your ADAM 6060 device. Click the button below to create your first profile."/>
+                </TextBlock>
+            </Border>
+
+            <!-- Spacer -->
+            <Grid Grid.Row="2"/>
+
+            <!-- Create Profile Button -->
+            <ui:Button Grid.Row="3"
+                       Content="➕ Create New Profile"
+                       Click="CreateProfileButton_Click"
+                       Appearance="Primary"
+                       HorizontalAlignment="Center"
+                       Padding="30,12"
+                       FontSize="14"
+                       FontWeight="SemiBold"/>
+        </Grid>
+    </Border>
+</Window>

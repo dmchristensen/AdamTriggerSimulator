@@ -1,0 +1,86 @@
+<Window x:Class="AdamTriggerSimulator.Views.ManualCommandDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AdamTriggerSimulator.ViewModels"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:ManualCommandDialogViewModel}"
+        Title="Manual UDP Command"
+        Width="500" Height="460"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown">
+
+    <Border BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Background="{DynamicResource ApplicationBackgroundBrush}">
+        <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Dialog Title -->
+        <TextBlock Grid.Row="0"
+                   Text="Manual UDP Command"
+                   FontSize="18"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,20"/>
+
+        <!-- Command Input -->
+        <TextBlock Grid.Row="1" Text="UDP Command:" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <ui:TextBox Grid.Row="2"
+                    Text="{Binding Command, UpdateSourceTrigger=PropertyChanged}"
+                    PlaceholderText="e.g., $01F or $01C"
+                    Margin="0,0,0,12"/>
+
+        <!-- Send and Clear Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,15">
+            <ui:Button Content="📤 Send Command"
+                       Command="{Binding SendCommandCommand}"
+                       IsEnabled="{Binding IsSending, Converter={StaticResource InverseBoolConverter}}"
+                       Appearance="Primary"
+                       Padding="16,8"
+                       Margin="0,0,10,0"/>
+            <ui:Button Content="🗑️ Clear"
+                       Command="{Binding ClearCommand}"
+                       Padding="16,8"/>
+        </StackPanel>
+
+        <!-- Response Display -->
+        <Border Grid.Row="4"
+                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="12"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBlock Text="{Binding Response}"
+                           TextWrapping="Wrap"
+                           FontFamily="Consolas"
+                           FontSize="12"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Close Button -->
+        <ui:Button Grid.Row="5"
+                   Content="Close"
+                   Click="CloseButton_Click"
+                   HorizontalAlignment="Right"
+                   Margin="0,15,0,0"
+                   Padding="20,8"
+                   MinWidth="100"/>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Transparent background -->
+  
+  <!-- Main blue module body -->
+  <rect x="50" y="30" width="156" height="196" rx="8" fill="#4da8da" stroke="#3a8bb5" stroke-width="3"/>
+  
+  <!-- Top terminal block -->
+  <rect x="70" y="20" width="116" height="20" rx="2" fill="#2d4a2c" stroke="#1a3019" stroke-width="2"/>
+  <!-- Terminal screws -->
+  <circle cx="85" cy="30" r="3" fill="#b8860b"/>
+  <circle cx="105" cy="30" r="3" fill="#b8860b"/>
+  <circle cx="125" cy="30" r="3" fill="#b8860b"/>
+  <circle cx="145" cy="30" r="3" fill="#b8860b"/>
+  <circle cx="165" cy="30" r="3" fill="#b8860b"/>
+  
+  <!-- Bottom terminal block -->
+  <rect x="70" y="216" width="116" height="20" rx="2" fill="#2d4a2c" stroke="#1a3019" stroke-width="2"/>
+  <!-- Terminal screws -->
+  <circle cx="85" cy="226" r="3" fill="#b8860b"/>
+  <circle cx="105" cy="226" r="3" fill="#b8860b"/>
+  <circle cx="125" cy="226" r="3" fill="#b8860b"/>
+  <circle cx="145" cy="226" r="3" fill="#b8860b"/>
+  <circle cx="165" cy="226" r="3" fill="#b8860b"/>
+  
+  <!-- Central circular label area -->
+  <circle cx="128" cy="128" r="65" fill="#e8e8e8" stroke="#c0c0c0" stroke-width="3"/>
+  
+  <!-- Inner gray circle -->
+  <circle cx="128" cy="128" r="58" fill="#d0d0d0" stroke="#a0a0a0" stroke-width="2"/>
+  
+  <!-- ADAM text -->
+  <text x="128" y="115" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        fill="#24292e" text-anchor="middle">ADAM</text>
+  
+  <!-- Model number -->
+  <text x="128" y="140" font-family="Arial, sans-serif" font-size="20" font-weight="bold" 
+        fill="#24292e" text-anchor="middle">6000</text>
+  
+  <!-- Mounting holes -->
+  <circle cx="65" cy="65" r="5" fill="#24292e" stroke="#1a1d21" stroke-width="2"/>
+  <circle cx="191" cy="65" r="5" fill="#24292e" stroke="#1a1d21" stroke-width="2"/>
+  <circle cx="65" cy="191" r="5" fill="#24292e" stroke="#1a1d21" stroke-width="2"/>
+  <circle cx="191" cy="191" r="5" fill="#24292e" stroke="#1a1d21" stroke-width="2"/>
+  
+  <!-- LED indicators on left side -->
+  <circle cx="115" cy="155" r="3" fill="#00ff00" opacity="0.8"/>
+  <circle cx="115" cy="170" r="3" fill="#FF6600" opacity="0.8"/>
+  
+  <!-- Small labels -->
+  <text x="122" y="158" font-family="Arial, sans-serif" font-size="8" 
+        fill="#ffffff" font-weight="bold">PWR</text>
+  <text x="122" y="173" font-family="Arial, sans-serif" font-size="8" 
+        fill="#ffffff" font-weight="bold">NET</text>
+  
+  <!-- Decorative curved accent -->
+  <path d="M 60 50 Q 128 45 196 50" fill="none" stroke="#65b8e6" stroke-width="2" opacity="0.5"/>
+  <path d="M 60 206 Q 128 211 196 206" fill="none" stroke="#65b8e6" stroke-width="2" opacity="0.5"/>
+</svg>

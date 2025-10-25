@@ -1,0 +1,77 @@
+name: PR Build & Test
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - '.github/**'
+      - '!.github/workflows/**'
+
+concurrency:
+  group: pr-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: windows-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+  build:
+    name: Build ${{ matrix.runtime }}
+    runs-on: windows-latest
+    if: github.event.pull_request.draft == false
+    needs: test
+
+    strategy:
+      matrix:
+        runtime: [win-x64, win-x86, win-arm64]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Publish ${{ matrix.runtime }}
+        run: |
+          dotnet publish src/AdamTriggerSimulator/AdamTriggerSimulator.csproj `
+            -c Release `
+            -r ${{ matrix.runtime }} `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -p:IncludeNativeLibrariesForSelfExtract=true `
+            -o publish/${{ matrix.runtime }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AdamTriggerSimulator-PR${{ github.event.pull_request.number }}-${{ matrix.runtime }}
+          path: publish/${{ matrix.runtime }}/AdamTriggerSimulator.exe
+          retention-days: 14
+          if-no-files-found: error
