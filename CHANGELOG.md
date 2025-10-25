@@ -2,9 +2,9 @@
 
 Just keeping track of what changes between versions!
 
-## [Unreleased]
+## [1.0.0] - 2025-01-26
 
-Initial version - getting ready for the first release!
+Initial release!
 
 ### Core Features
 
@@ -50,3 +50,5 @@ Initial version - getting ready for the first release!
 - Thread-safe state tracking (no more race conditions!)
 - Proper resource cleanup when UDP connections timeout
 - Robust error handling so the app doesn't crash on network issues
+
+[1.0.0]: https://github.com/dmchristensen/AdamTriggerSimulator/releases/tag/v1.0.0
