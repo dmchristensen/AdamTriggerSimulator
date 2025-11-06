@@ -65,7 +65,7 @@ A Windows desktop application for simulating digital input triggers on Advantech
 
 ### Installation
 
-#### Option 1: Download Release (Coming Soon)
+#### Option 1: Download Release
 Download the latest release from the [Releases](https://github.com/dmchristensen/AdamTriggerSimulator/releases) page.
 
 #### Option 2: Build from Source
